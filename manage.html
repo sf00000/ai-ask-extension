@@ -1,55 +1,55 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
+<html lang="zh-CN" data-page-node-id="fEqDMF4BXjt0Z3Wd3HAHgJ">
+<head data-page-node-id="HP1Jn6yEtxK378lLd9ilig">
+  <meta charset="UTF-8" data-page-node-id="8AT57lto0nvf2oovO0BRzl" />
   <title>模版与数据管理</title>
-  <link rel="stylesheet" href="manage.css" />
+  <link rel="stylesheet" href="manage.css" data-page-node-id="nvHe1HFKsuuHfowhdUOZHe" />
 </head>
-<body>
-  <div class="container">
-    <h1>模版与数据管理</h1>
+<body data-page-node-id="xVg0Bny9oMDzh2MRSkHOtW">
+  <div class="container" data-page-node-id="CLLGNexRAf6ucrda7y5Vpd">
+    <h1 data-page-node-id="TA46mqlrN4njgEd7Y1RndI">模版与数据管理</h1>
 
     <!-- 本地数据目录 -->
-    <section class="card">
-      <h2>本地数据目录</h2>
-      <p class="desc">
+    <section class="card" data-page-node-id="7gZr65gooK936pDUQehzhL">
+      <h2 data-page-node-id="EMCXKNShHBk3cJfAezvveK">本地数据目录</h2>
+      <p class="desc" data-page-node-id="C9SHXPHt6TMqy8cdvZXAEu">
         选择一个插件目录之外的本地文件夹后，提示词模版（prompt-templates.json）和
         提问记录（ask-history.json）会自动同步保存到该目录，方便查看与备份。
       </p>
-      <div class="dir-row">
-        <span id="dir-status" class="dir-status">未设置</span>
-        <button id="pick-dir-btn" class="small-primary" type="button">选择目录</button>
-        <button id="sync-now-btn" class="link-btn hidden" type="button">立即同步</button>
-        <button id="forget-dir-btn" class="link-btn hidden danger" type="button">取消关联</button>
+      <div class="dir-row" data-page-node-id="thAHFrvs7zcQLQRvMWrFFi">
+        <span id="dir-status" class="dir-status" data-page-node-id="mBo4HgmZUoGUqSKBnmBC4a">未设置</span>
+        <button id="pick-dir-btn" class="small-primary" type="button" data-page-node-id="WqV1OctcETTn1QbfbEYEZG">选择目录</button>
+        <button id="sync-now-btn" class="link-btn hidden" type="button" data-page-node-id="9UYdDkufiV34euFAOwljXP">立即同步</button>
+        <button id="forget-dir-btn" class="link-btn hidden danger" type="button" data-page-node-id="XcTzZ4bUZwFqqSnZSOEcrx">取消关联</button>
       </div>
-      <div class="dir-row">
-        <button id="export-btn" class="link-btn" type="button">导出 JSON</button>
-        <button id="import-btn" class="link-btn" type="button">导入 JSON</button>
-        <input id="import-file" type="file" accept=".json,application/json" class="hidden" />
+      <div class="dir-row" data-page-node-id="XY7hIlgG4ZDQE84pUKcGDh">
+        <button id="export-btn" class="link-btn" type="button" data-page-node-id="ef3BMVc33YE8wy1L4Nmh3F">导出 JSON</button>
+        <button id="import-btn" class="link-btn" type="button" data-page-node-id="8k4BHhArSKRcZDhqE6QqaI">导入 JSON</button>
+        <input id="import-file" type="file" accept=".json,application/json" class="hidden" data-page-node-id="gcKZFWhQuYGs92MSRGEazI" />
       </div>
     </section>
 
     <!-- 模版管理 -->
-    <section class="card">
-      <div class="section-header">
-        <h2>提示词模版</h2>
-        <button id="add-template-btn" class="small-primary" type="button">新建模版</button>
+    <section class="card" data-page-node-id="NGvGpwxkIhrBUxRW89221w">
+      <div class="section-header" data-page-node-id="7PyXkZUklHt7LCXGGl0bCk">
+        <h2 data-page-node-id="bf8peYfJHsVYgz4KjiPNWJ">提示词模版</h2>
+        <button id="add-template-btn" class="small-primary" type="button" data-page-node-id="Ytooh07bUwjpjoFPJ33Lju">新建模版</button>
       </div>
-      <div id="template-list"></div>
-      <p id="template-empty" class="desc hidden">暂无模版，点击右上角「新建模版」创建。</p>
+      <div id="template-list" data-page-node-id="u8L45fsvIZb5PX2vYexzBV"></div>
+      <p id="template-empty" class="desc hidden" data-page-node-id="ikoX14ZVmclYYdo06BS7d2">暂无模版，点击右上角「新建模版」创建。</p>
     </section>
 
     <!-- 提问记录 -->
-    <section class="card">
-      <div class="section-header">
-        <h2>提问记录</h2>
-        <button id="clear-history-btn" class="link-btn danger" type="button">清空记录</button>
+    <section class="card" data-page-node-id="3E7S7MgvaSxKjphzFL7EiC">
+      <div class="section-header" data-page-node-id="oG2yU6KLn1rv08YueEDqTq">
+        <h2 data-page-node-id="8nqjoFkXSj7nhGSxAzuSqA">提问记录</h2>
+        <button id="clear-history-btn" class="link-btn danger" type="button" data-page-node-id="rJEBW2edDU4g3rfNRxkXRI">清空记录</button>
       </div>
-      <div id="history-list"></div>
-      <p id="history-empty" class="desc hidden">暂无提问记录。</p>
+      <div id="history-list" data-page-node-id="dXnZmoVMj1zA64F9cW1I4q"></div>
+      <p id="history-empty" class="desc hidden" data-page-node-id="blyWUpgl6pFv5UnvfrvSb5">暂无提问记录。</p>
     </section>
 
-    <div id="toast" class="toast hidden"></div>
+    <div id="toast" class="toast hidden" data-page-node-id="XKOiOFUkXdMcqGGIoBvqa6"></div>
   </div>
 
   <script src="models.js"></script>

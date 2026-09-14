@@ -4,9 +4,11 @@
 
 目前内置模型：ChatGPT、DeepSeek、Gemini、豆包。
 
-![AI 划词提问 · 跳转流程](docs/jump-flow.png)
+![提问弹窗截图](docs/compose-popup.png)
 
 ## 使用流程
+
+![AI 划词提问 · 跳转流程](docs/jump-flow.png)
 
 1. 网页中选中一段文字
 2. 右键 → 「用 AI 提问」

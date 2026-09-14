@@ -1,56 +1,56 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
+<html lang="zh-CN" data-page-node-id="lrBX2ILZI52lWjj7Ch0AJD">
+<head data-page-node-id="YsX9UFPh9Z0BHELqTubFDJ">
+  <meta charset="UTF-8" data-page-node-id="2PuzSgItmf40GEFjroW1VK" />
   <title>AI 划词提问</title>
-  <link rel="stylesheet" href="compose.css" />
+  <link rel="stylesheet" href="compose.css" data-page-node-id="xbNdNJi0hAtxV4Ors8bBsq" />
 </head>
-<body>
-  <div class="container">
-    <h1>AI 划词提问</h1>
+<body data-page-node-id="BEucEHqOLJKthqkWHAa1kC">
+  <div class="container" data-page-node-id="Tjr3sSMXpFQBw6o3jZ5gAM">
+    <h1 data-page-node-id="XSFLuCKQv4yjR8zJt2IDqA">AI 划词提问</h1>
 
-    <label class="field-label">选择模型</label>
-    <div id="model-list" class="model-list"></div>
+    <label class="field-label" data-page-node-id="D9hxfYoTXHSGGfv2GuNNDu">选择模型</label>
+    <div id="model-list" class="model-list" data-page-node-id="b1h0lK2xJ7mssjigavhs3c"></div>
 
-    <label class="field-label" for="selected-text">选中的文字（可编辑）</label>
+    <label class="field-label" for="selected-text" data-page-node-id="mPjMwAMQEbJYbVz8oG5DzD">选中的文字（可编辑）</label>
     <textarea id="selected-text" rows="6"></textarea>
 
-    <div class="prompt-header">
-      <label class="field-label" for="extra-prompt">追加提示词（可选）</label>
-      <div class="template-actions">
-        <button id="save-template-btn" class="link-btn" type="button">存为模版</button>
-        <button id="manage-template-btn" class="link-btn" type="button">管理模版</button>
+    <div class="prompt-header" data-page-node-id="Rjy2CtOV13r7IZ5efIJP91">
+      <label class="field-label" for="extra-prompt" data-page-node-id="ZTHc5KXYgA5Nyqz7ZIafHn">追加提示词（可选）</label>
+      <div class="template-actions" data-page-node-id="0C0Ssd2H1jLJ6j0PppWv14">
+        <button id="save-template-btn" class="link-btn" type="button" data-page-node-id="m4kgfXCk5mqn8BLFZSScvb">存为模版</button>
+        <button id="manage-template-btn" class="link-btn" type="button" data-page-node-id="0kBSgHNA8AWNJ4Qa6RlUSA">管理模版</button>
       </div>
     </div>
-    <div id="template-chips" class="template-chips"></div>
+    <div id="template-chips" class="template-chips" data-page-node-id="D4z4F3x4B6dZih9cWb5AeE"></div>
     <textarea id="extra-prompt" rows="3" placeholder="可直接输入，或点击上方模版标签"></textarea>
 
     <!-- 存为模版对话框 -->
-    <div id="save-dialog" class="save-dialog hidden">
-      <div class="save-dialog-row">
-        <input id="template-title-input" type="text" placeholder="模版名称" />
-        <button id="save-dialog-ok" class="small-primary" type="button">保存</button>
-        <button id="save-dialog-cancel" class="link-btn" type="button">取消</button>
+    <div id="save-dialog" class="save-dialog hidden" data-page-node-id="W6A65Q8jF5GYxjrz9erExX">
+      <div class="save-dialog-row" data-page-node-id="x8JKT86Q1XjZuKwshXOWmt">
+        <input id="template-title-input" type="text" placeholder="模版名称" data-page-node-id="6YCBpxrF5c22EJOF4Cgb4Q" />
+        <button id="save-dialog-ok" class="small-primary" type="button" data-page-node-id="XG91o2Tofd1mIWWPE0lzRw">保存</button>
+        <button id="save-dialog-cancel" class="link-btn" type="button" data-page-node-id="ye0544ZmaQMWUyOl94KGZR">取消</button>
       </div>
-      <p id="save-dialog-error" class="error-text hidden"></p>
+      <p id="save-dialog-error" class="error-text hidden" data-page-node-id="Be1ZWSl2oJWZCDJ7D7RrH9"></p>
     </div>
 
-    <label class="auto-send">
-      <input type="checkbox" id="auto-send" checked />
+    <label class="auto-send" data-page-node-id="eJOLfDZBr0aVnpetjEFN2l">
+      <input type="checkbox" id="auto-send" checked data-page-node-id="EK9dDdEpBWREciX3TXpnhD" />
       打开网页后自动发送（取消勾选则只填入输入框）
     </label>
 
-    <label class="auto-send">
-      <input type="checkbox" id="jump-to-tab" checked />
+    <label class="auto-send" data-page-node-id="48vRDxcG2OPDPnjSJO913b">
+      <input type="checkbox" id="jump-to-tab" checked data-page-node-id="WADY25hrzpg313b7Cbcgga" />
       发送后跳转到模型页面（取消则在后台静默提问，稍后统一查看回答）
     </label>
 
-    <div class="actions">
-      <button id="send-btn" class="primary">发送（⌘/Ctrl + Enter）</button>
+    <div class="actions" data-page-node-id="RxvL8pJ4X1k2pbYxkiuHn2">
+      <button id="send-btn" class="primary" data-page-node-id="nxBzJh89kH10qPM7hZQAIm">发送（⌘/Ctrl + Enter）</button>
     </div>
 
-    <p id="dir-hint" class="hint hidden"></p>
-    <p class="hint">将打开对应模型的官方网页版并开启新对话；浏览器已登录则无需再次登录。</p>
+    <p id="dir-hint" class="hint hidden" data-page-node-id="BNpubLaD2egBJdMMqmjZWo"></p>
+    <p class="hint" data-page-node-id="ENRFZvrKmuE5tCKfiyeF8T">将打开对应模型的官方网页版并开启新对话；浏览器已登录则无需再次登录。</p>
   </div>
 
   <script src="models.js"></script>
