@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI 划词提问</title>
+  <link rel="stylesheet" href="compose.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>AI 划词提问</h1>
+
+    <label class="field-label">选择模型</label>
+    <div id="model-list" class="model-list"></div>
+
+    <label class="field-label" for="selected-text">选中的文字（可编辑）</label>
+    <textarea id="selected-text" rows="6"></textarea>
+
+    <div class="prompt-header">
+      <label class="field-label" for="extra-prompt">追加提示词（可选）</label>
+      <div class="template-actions">
+        <button id="save-template-btn" class="link-btn" type="button">存为模版</button>
+        <button id="manage-template-btn" class="link-btn" type="button">管理模版</button>
+      </div>
+    </div>
+    <div id="template-chips" class="template-chips"></div>
+    <textarea id="extra-prompt" rows="3" placeholder="可直接输入，或点击上方模版标签"></textarea>
+
+    <!-- 存为模版对话框 -->
+    <div id="save-dialog" class="save-dialog hidden">
+      <div class="save-dialog-row">
+        <input id="template-title-input" type="text" placeholder="模版名称" />
+        <button id="save-dialog-ok" class="small-primary" type="button">保存</button>
+        <button id="save-dialog-cancel" class="link-btn" type="button">取消</button>
+      </div>
+      <p id="save-dialog-error" class="error-text hidden"></p>
+    </div>
+
+    <label class="auto-send">
+      <input type="checkbox" id="auto-send" checked />
+      打开网页后自动发送（取消勾选则只填入输入框）
+    </label>
+
+    <label class="auto-send">
+      <input type="checkbox" id="jump-to-tab" checked />
+      发送后跳转到模型页面（取消则在后台静默提问，稍后统一查看回答）
+    </label>
+
+    <div class="actions">
+      <button id="send-btn" class="primary">发送（⌘/Ctrl + Enter）</button>
+    </div>
+
+    <p id="dir-hint" class="hint hidden"></p>
+    <p class="hint">将打开对应模型的官方网页版并开启新对话；浏览器已登录则无需再次登录。</p>
+  </div>
+
+  <script src="models.js"></script>
+  <script src="lib/store.js"></script>
+  <script src="compose.js"></script>
+</body>
+</html>

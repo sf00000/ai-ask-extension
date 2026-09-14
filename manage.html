@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>模版与数据管理</title>
+  <link rel="stylesheet" href="manage.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>模版与数据管理</h1>
+
+    <!-- 本地数据目录 -->
+    <section class="card">
+      <h2>本地数据目录</h2>
+      <p class="desc">
+        选择一个插件目录之外的本地文件夹后，提示词模版（prompt-templates.json）和
+        提问记录（ask-history.json）会自动同步保存到该目录，方便查看与备份。
+      </p>
+      <div class="dir-row">
+        <span id="dir-status" class="dir-status">未设置</span>
+        <button id="pick-dir-btn" class="small-primary" type="button">选择目录</button>
+        <button id="sync-now-btn" class="link-btn hidden" type="button">立即同步</button>
+        <button id="forget-dir-btn" class="link-btn hidden danger" type="button">取消关联</button>
+      </div>
+      <div class="dir-row">
+        <button id="export-btn" class="link-btn" type="button">导出 JSON</button>
+        <button id="import-btn" class="link-btn" type="button">导入 JSON</button>
+        <input id="import-file" type="file" accept=".json,application/json" class="hidden" />
+      </div>
+    </section>
+
+    <!-- 模版管理 -->
+    <section class="card">
+      <div class="section-header">
+        <h2>提示词模版</h2>
+        <button id="add-template-btn" class="small-primary" type="button">新建模版</button>
+      </div>
+      <div id="template-list"></div>
+      <p id="template-empty" class="desc hidden">暂无模版，点击右上角「新建模版」创建。</p>
+    </section>
+
+    <!-- 提问记录 -->
+    <section class="card">
+      <div class="section-header">
+        <h2>提问记录</h2>
+        <button id="clear-history-btn" class="link-btn danger" type="button">清空记录</button>
+      </div>
+      <div id="history-list"></div>
+      <p id="history-empty" class="desc hidden">暂无提问记录。</p>
+    </section>
+
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="models.js"></script>
+  <script src="lib/store.js"></script>
+  <script src="manage.js"></script>
+</body>
+</html>

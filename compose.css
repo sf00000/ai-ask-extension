@@ -1,0 +1,248 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif;
+  background: #f6f7f9;
+  color: #1f2329;
+  font-size: 14px;
+}
+
+.container {
+  padding: 20px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+h1 {
+  font-size: 17px;
+  margin: 0 0 6px;
+}
+
+.field-label {
+  font-size: 12px;
+  color: #646a73;
+  margin-top: 6px;
+}
+
+.model-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.model-item {
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid #d0d3d9;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.model-item:hover {
+  border-color: #3370ff;
+  color: #3370ff;
+}
+
+.model-item.active {
+  background: #3370ff;
+  border-color: #3370ff;
+  color: #fff;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #d0d3d9;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  font-family: inherit;
+  background: #fff;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: #3370ff;
+  box-shadow: 0 0 0 2px rgba(51, 112, 255, 0.12);
+}
+
+/* 提示词模版行 */
+.prompt-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.prompt-header .field-label {
+  margin-top: 0;
+}
+
+.template-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 模版标签：全部平铺展示，最近/高频使用排在前面 */
+.template-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 96px;
+  overflow-y: auto;
+}
+
+.template-chip {
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid #d0d3d9;
+  background: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  color: #1f2329;
+  transition: all 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.template-chip:hover {
+  border-color: #3370ff;
+  color: #3370ff;
+}
+
+.template-chip.hot {
+  border-color: #3370ff;
+  color: #3370ff;
+  background: #eef3ff;
+}
+
+.template-chip .use-count {
+  color: #8f959e;
+  margin-left: 4px;
+  font-size: 11px;
+}
+
+.template-chips-empty {
+  font-size: 12px;
+  color: #8f959e;
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  color: #3370ff;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px 4px;
+  white-space: nowrap;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+/* 存为模版对话框 */
+.save-dialog {
+  border: 1px solid #d0d3d9;
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px 12px;
+}
+
+.save-dialog-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#template-title-input {
+  flex: 1;
+  height: 30px;
+  border: 1px solid #d0d3d9;
+  border-radius: 6px;
+  padding: 0 10px;
+  font-size: 13px;
+  outline: none;
+}
+
+#template-title-input:focus {
+  border-color: #3370ff;
+}
+
+.small-primary {
+  height: 30px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 6px;
+  background: #3370ff;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.small-primary:hover {
+  background: #295fe0;
+}
+
+.error-text {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: #d83931;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.auto-send {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #646a73;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.actions {
+  margin-top: 10px;
+}
+
+button.primary {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  background: #3370ff;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+button.primary:hover {
+  background: #295fe0;
+}
+
+button.primary:disabled {
+  background: #a9c0ff;
+  cursor: not-allowed;
+}
+
+.hint {
+  margin: 4px 0 0;
+  font-size: 11px;
+  color: #8f959e;
+  line-height: 1.5;
+}
