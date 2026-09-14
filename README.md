@@ -4,6 +4,8 @@
 
 目前内置模型：ChatGPT、DeepSeek、Gemini、豆包。
 
+![AI 划词提问 · 跳转流程](docs/jump-flow.png)
+
 ## 使用流程
 
 1. 网页中选中一段文字
