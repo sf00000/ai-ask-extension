@@ -3,7 +3,14 @@
   "name": "AI 划词提问助手",
   "version": "1.0.0",
   "description": "选中网页文字，右键一键向 ChatGPT、DeepSeek、Gemini、豆包等大模型提问。支持追加自定义提示词，每次自动开启新对话。",
-  "permissions": ["contextMenus", "storage"],
+  "permissions": ["contextMenus", "storage", "activeTab", "scripting"],
+  "optional_host_permissions": ["https://*/*"],
+  "commands": {
+    "screenshot-ask": {
+      "suggested_key": { "default": "Alt+S" },
+      "description": "截图并向 AI 提问（框选区域）"
+    }
+  },
   "host_permissions": [
     "https://chatgpt.com/*",
     "https://chat.deepseek.com/*",

@@ -246,3 +246,45 @@ button.primary:disabled {
   color: #8f959e;
   line-height: 1.5;
 }
+
+/* ---------- 截图附件预览 ---------- */
+
+.screenshot-preview {
+  margin-top: 10px;
+}
+
+.screenshot-card {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  border: 1px solid #e0e2e6;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f5f6f7;
+}
+
+.screenshot-card img {
+  display: block;
+  max-width: 100%;
+  max-height: 180px;
+}
+
+.screenshot-card button {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 14px;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+.screenshot-card button:hover {
+  background: rgba(0, 0, 0, 0.75);
+}

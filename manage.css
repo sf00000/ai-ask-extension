@@ -216,3 +216,71 @@ h2 {
 .hidden {
   display: none !important;
 }
+
+/* ---------- AI 生成模版 ---------- */
+
+.divider {
+  border: none;
+  border-top: 1px solid #e5e6eb;
+  margin: 16px 0;
+}
+
+.api-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 0.8fr;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.api-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: #4e5969;
+}
+
+.api-grid input {
+  padding: 7px 10px;
+  border: 1px solid #d0d3d9;
+  border-radius: 6px;
+  font-size: 13px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.api-grid input:focus {
+  outline: none;
+  border-color: #3370ff;
+}
+
+.field-block {
+  display: block;
+  font-size: 12px;
+  color: #4e5969;
+  margin: 10px 0 4px;
+}
+
+#gen-requirement,
+#gen-title,
+#gen-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid #d0d3d9;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+#gen-result {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px dashed #c9cdd4;
+  border-radius: 8px;
+  background: #fafbfc;
+}
+
+#gen-result .dir-row {
+  margin-top: 10px;
+}

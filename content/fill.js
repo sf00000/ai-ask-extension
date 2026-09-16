@@ -89,6 +89,38 @@ function pressEnter(el) {
   el.dispatchEvent(new KeyboardEvent('keyup', opts));
 }
 
+// ---------- 图片粘贴上传 ----------
+
+function dataUrlToFile(dataUrl, name) {
+  const [head, b64] = dataUrl.split(',');
+  const mime = (head.match(/data:([^;]+)/) || [, 'image/png'])[1];
+  const bin = atob(b64);
+  const arr = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+  return new File([arr], name, { type: mime });
+}
+
+/** 向输入框模拟粘贴图片（各模型网页版把 paste 事件当作上传附件处理）。 */
+function pasteImage(el, dataUrl) {
+  try {
+    el.focus();
+    const file = dataUrlToFile(dataUrl, 'screenshot.png');
+    const dt = new DataTransfer();
+    dt.items.add(file);
+    const ev = new ClipboardEvent('paste', {
+      bubbles: true,
+      cancelable: true,
+      clipboardData: dt,
+    });
+    el.dispatchEvent(ev);
+    log('已派发图片粘贴事件：', file.size, '字节');
+    return true;
+  } catch (e) {
+    log('图片粘贴失败：', e);
+    return false;
+  }
+}
+
 function trySend(config, inputEl) {
   const btn = findFirst(config.sendSelectors);
   if (btn && !btn.disabled) {
@@ -102,10 +134,14 @@ function trySend(config, inputEl) {
 }
 
 /** 向后台取待填充内容（消息通道）；失败则回退直接读 storage.session 队列。 */
+function hasContent(p) {
+  return p && (p.text || p.imageDataUrl);
+}
+
 async function fetchPayload(host) {
   try {
     const payload = await chrome.runtime.sendMessage({ type: 'consumePendingFill', host });
-    if (payload && payload.text) return payload;
+    if (hasContent(payload)) return payload;
     return null;
   } catch (e) {
     // 后台不可达时回退
@@ -114,7 +150,7 @@ async function fetchPayload(host) {
     const { pendingQueue = [] } = await chrome.storage.session.get('pendingQueue');
     const now = Date.now();
     const idx = pendingQueue.findIndex(
-      (p) => p.host === host && p.text && now - p.ts < 120000
+      (p) => p.host === host && hasContent(p) && now - p.ts < 120000
     );
     if (idx === -1) return null;
     const [payload] = pendingQueue.splice(idx, 1);
@@ -144,7 +180,7 @@ function main() {
     if (!payload) {
       payload = await fetchPayload(location.hostname);
       if (payload) {
-        log('收到待填充内容，长度：', payload.text.length);
+        log('收到待填充内容，文字长度：', (payload.text || '').length, '含图：', !!payload.imageDataUrl);
       }
       return; // 下一轮再找输入框，避免同帧时序问题
     }
@@ -153,13 +189,19 @@ function main() {
     if (!inputEl) return;
 
     clearInterval(timer);
-    fillInput(inputEl, payload.text);
-    log('已填入输入框');
+
+    // 先粘贴图片（上传需要时间），再填文字
+    const hasImage = !!payload.imageDataUrl;
+    if (hasImage) pasteImage(inputEl, payload.imageDataUrl);
+    if (payload.text) {
+      fillInput(inputEl, payload.text);
+      log('已填入输入框');
+    }
 
     if (payload.autoSend && !asked) {
       asked = true;
-      // 等编辑器内部状态同步后再发送
-      setTimeout(() => trySend(cfg, inputEl), 800);
+      // 图片上传中直接发送会丢附件，多等一会儿
+      setTimeout(() => trySend(cfg, inputEl), hasImage ? 3000 : 800);
     }
   }, POLL_INTERVAL);
 }

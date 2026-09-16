@@ -29,6 +29,47 @@
       </div>
     </section>
 
+    <!-- AI 生成模版 -->
+    <section class="card" data-page-node-id="aiGenCard001">
+      <h2>AI 生成模版</h2>
+      <p class="desc">
+        配置一个大模型的 API（如 DeepSeek，兼容 OpenAI 接口格式的服务均可），
+        用 AI 按你的需求生成提示词模版，生成结果可修改后再保存。
+        API Key 仅保存在本机浏览器扩展存储中。
+      </p>
+
+      <div class="api-grid" data-page-node-id="aiGenCfg001">
+        <label>API 地址<input id="api-base" type="text" placeholder="https://api.deepseek.com" /></label>
+        <label>API Key<input id="api-key" type="password" placeholder="sk-..." /></label>
+        <label>模型名称<input id="api-model" type="text" placeholder="deepseek-chat" /></label>
+      </div>
+      <div class="dir-row" data-page-node-id="aiGenCfgRow001">
+        <button id="api-save-btn" class="small-primary" type="button">保存 API 配置</button>
+        <button id="api-test-btn" class="link-btn" type="button">测试连接</button>
+        <span id="api-status" class="dir-status" data-page-node-id="aiGenStatus001"></span>
+      </div>
+
+      <hr class="divider" data-page-node-id="aiGenDiv001" />
+
+      <label class="field-block" for="gen-requirement" data-page-node-id="aiGenReq001">模版需求描述（想用这个模版做什么）</label>
+      <textarea id="gen-requirement" rows="2" placeholder="例：把网页选中的英文技术文档翻译成中文，术语保持准确，段落结构不变"></textarea>
+      <div class="dir-row" data-page-node-id="aiGenRow001">
+        <button id="gen-btn" class="small-primary" type="button">AI 生成</button>
+      </div>
+
+      <div id="gen-result" class="hidden" data-page-node-id="aiGenRes001">
+        <label class="field-block" for="gen-title">模版名称（可修改）</label>
+        <input id="gen-title" type="text" placeholder="模版名称" />
+        <label class="field-block" for="gen-content">模版内容（可修改）</label>
+        <textarea id="gen-content" rows="5"></textarea>
+        <p id="gen-error" class="error-text hidden"></p>
+        <div class="dir-row" data-page-node-id="aiGenResRow001">
+          <button id="gen-save-btn" class="small-primary" type="button">保存为模版</button>
+          <button id="gen-discard-btn" class="link-btn" type="button">放弃</button>
+        </div>
+      </div>
+    </section>
+
     <!-- 模版管理 -->
     <section class="card" data-page-node-id="NGvGpwxkIhrBUxRW89221w">
       <div class="section-header" data-page-node-id="7PyXkZUklHt7LCXGGl0bCk">

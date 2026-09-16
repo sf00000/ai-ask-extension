@@ -135,6 +135,8 @@ async function confirmSaveTemplate() {
 
 // ---------- 发送 ----------
 
+let currentScreenshot = null;
+
 function buildFinalText() {
   const selected = document.getElementById('selected-text').value.trim();
   const extra = document.getElementById('extra-prompt').value.trim();
@@ -144,7 +146,7 @@ function buildFinalText() {
 async function send() {
   const model = MODELS[currentModelId];
   const { selected, extra, finalText } = buildFinalText();
-  if (!model || !finalText) return;
+  if (!model || (!finalText && !currentScreenshot)) return;
 
   const autoSend = document.getElementById('auto-send').checked;
   const jumpToTab = document.getElementById('jump-to-tab').checked;
@@ -157,7 +159,7 @@ async function send() {
   settings.jumpToTab = jumpToTab;
   await DataStore.saveSettings(settings);
 
-  // 记录提问历史
+  // 记录提问历史（不存图片本体，避免本地同步文件膨胀）
   await DataStore.addHistory({
     modelId: model.id,
     modelName: model.name,
@@ -165,13 +167,20 @@ async function send() {
     extraPrompt: extra,
     finalText,
     autoSend,
+    hasImage: !!currentScreenshot,
   });
 
   // 由后台服务线程在「正常窗口」中打开模型页面，
   // 避免标签页被开进本 popup 小窗并随窗口一起关闭
   await chrome.runtime.sendMessage({
     type: 'openModelTab',
-    payload: { modelId: model.id, text: finalText, autoSend, foreground: jumpToTab },
+    payload: {
+      modelId: model.id,
+      text: finalText,
+      imageDataUrl: currentScreenshot,
+      autoSend,
+      foreground: jumpToTab,
+    },
   });
   window.close();
 }
@@ -214,6 +223,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   document.getElementById('selected-text').value =
     (compose && compose.selectedText) || '';
+
+  // 截图附件（快捷键截图提问时传入）
+  currentScreenshot = (compose && compose.screenshot) || null;
+  const preview = document.getElementById('screenshot-preview');
+  if (currentScreenshot) {
+    document.getElementById('screenshot-img').src = currentScreenshot;
+    preview.classList.remove('hidden');
+  }
+  document.getElementById('screenshot-remove').addEventListener('click', () => {
+    currentScreenshot = null;
+    preview.classList.add('hidden');
+  });
 
   // 恢复「发送后跳转」偏好（默认跳转）
   document.getElementById('jump-to-tab').checked = settings.jumpToTab !== false;
